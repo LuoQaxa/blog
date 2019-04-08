@@ -23,3 +23,6 @@
 }
 ```
 3. 设置断点或者debugger进行调试
+
+[参考](https://segmentfault.com/a/1190000010605261)
+[ts-debug-example](https://github.com/MinionsDave/ts-debug-example)
