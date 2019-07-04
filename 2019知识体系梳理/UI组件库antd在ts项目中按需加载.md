@@ -51,5 +51,16 @@
 1. ts编译输出为`es2015`，也就是支持import的js版本
 2. moduleResolution值为`node`
 
+#### 坑
+我采用`webpack-bundle-analyzer`来分析项目的打包情况
+1. css按需加载的问题
+由于组件的css按需加载之后antd的样式文件会晚与项目本身的reset.css，这就是会造成reset.css样式被覆盖的问题，项目中就有`p`标签的margin属性被antd的样式所覆盖，导致样式错乱。想了许久没有想到好的方案：发现好多人有同样的问题，在(issuse)[https://github.com/ant-design/ant-design/issues/4331].
+看了之后依然没有啥好的方法，求指点。
+
+2. @ant-design/icons包被全部导入
+我发现虽然我只引入了 message, spin, form, input, 但是由于message组件中引入了icon所以，虽然我没有直接使用icon组件还是引入了。并且是所有的icon都被引入。究其原因是在源码中引入icon的方式是`import * as allIcons from '@ant-design/icons/lib/dist';`,所以导致只要有用到的icon组件或者有组件间接引用了icon组件就会出现所有icon资源都被加载的问题。
+[解决方式参考](https://www.zhihu.com/question/308898834),原理就是在打包项目的时候将引入icon的地址重定向到自定义的icon文件。
+
 #### 最终效果
 添加了按需加载之后从之前的开发环境下index.js（9.21mb）减少到(4.04mb),效果还是很明显的。
+
