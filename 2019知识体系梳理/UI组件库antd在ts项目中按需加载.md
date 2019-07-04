@@ -54,7 +54,7 @@
 #### 坑
 我采用`webpack-bundle-analyzer`来分析项目的打包情况
 1. css按需加载的问题
-由于组件的css按需加载之后antd的样式文件会晚与项目本身的reset.css，这就是会造成reset.css样式被覆盖的问题，项目中就有`p`标签的margin属性被antd的样式所覆盖，导致样式错乱。想了许久没有想到好的方案：发现好多人有同样的问题，在(issuse)[https://github.com/ant-design/ant-design/issues/4331].
+由于组件的css按需加载之后antd的样式文件会晚与项目本身的reset.css，这就是会造成reset.css样式被覆盖的问题，项目中就有`p`标签的margin属性被antd的样式所覆盖，导致样式错乱。想了许久没有想到好的方案：发现好多人有同样的问题，在[issuse](https://github.com/ant-design/ant-design/issues/4331).
 看了之后依然没有啥好的方法，求指点。
 
 2. @ant-design/icons包被全部导入
